@@ -1,12 +1,14 @@
 {
-  "name": "ca-weather-trends",
+  "name": "ca-data-trends",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "style/fix": "prettier --config .prettierrc.yaml --write src *.ts *.js",
+    "style/check": "prettier --config .prettierrc.yaml --check src *.ts *.js"
   },
   "dependencies": {
     "react": "^18",
@@ -19,6 +21,8 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3"
   }
 }
