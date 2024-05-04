@@ -1,6 +1,6 @@
 name: style-check
 on:
-  - push # TODO remove this before PR
+  - push
   - pull_request
 
 jobs:
