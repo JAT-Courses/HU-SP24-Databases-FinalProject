@@ -1,0 +1,15 @@
+on:
+  pull_request_target:
+    types:
+      - closed
+
+jobs:
+  check-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch names
+        if: ${{ github.head_ref == 'preview' && github.base_ref == 'main' && github.event.pull_request.merged == true}}
+        run: |
+          git checkout preview
+          git merge origin/main --commit "Brining the preview branch in-sync with main!"
+          git push origin preview
