@@ -1,0 +1,34 @@
+{
+  "name": "ca-data-trends",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "style/fix": "prettier --config .prettierrc --write src *.ts *.js",
+    "style/check": "prettier --config .prettierrc --check src *.ts *.js"
+  },
+  "dependencies": {
+    "@canvasjs/react-charts": "^1.0.2",
+    "@next/env": "^14.2.3",
+    "mysql2": "^3.9.7",
+    "next": "14.2.3",
+    "prettier": "^3.2.5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.8",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "eslint-config-prettier": "^9.1.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
