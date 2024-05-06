@@ -14,6 +14,8 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
+      - run: "ls -a"
+
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
         with:
