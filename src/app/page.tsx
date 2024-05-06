@@ -1,17 +1,15 @@
-import mysql from 'mysql2';
-import { databaseCredentials } from "@/config/databaseCredentials";
+import mysql from "mysql2"
+import { databaseCredentials } from "@/config/databaseCredentials"
 
-import Image from "next/image";
+import Image from "next/image"
 
 export default function Home() {
-
   try {
-    const databaseConnection = mysql.createConnection(databaseCredentials);
+    const databaseConnection = mysql.createConnection(databaseCredentials)
 
-    console.log("Connected to DB successfully!");
-
+    console.log("Connected to DB successfully!")
   } catch (err) {
-    console.error("Connection to DB failed: ", err);
+    console.error("Connection to DB failed: ", err)
   }
 
   return (
@@ -122,5 +120,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  );
+  )
 }
