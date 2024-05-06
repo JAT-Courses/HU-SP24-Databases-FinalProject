@@ -17,4 +17,4 @@ jobs:
         with:
           # This part is also where you can pass other options, for example:
           prettier_options: --check **/*.tsx **/*.ts --ignore-path ../.prettierignore --config ../.prettierrc
-          working_directory: src/
+          working_directory: src
