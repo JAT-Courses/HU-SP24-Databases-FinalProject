@@ -1,5 +1,5 @@
 import { ConnectionOptions } from 'mysql2/promise';
-import '../../envConfig.ts'
+import '../../envConfig'
 
 const databaseCredentials: ConnectionOptions = {
   host: process.env.DB_HOST,

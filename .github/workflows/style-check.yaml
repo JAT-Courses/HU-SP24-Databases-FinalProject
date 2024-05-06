@@ -1,6 +1,5 @@
 name: style-check
 on:
-  - push
   - pull_request
 
 jobs:
@@ -17,4 +16,4 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: --config .prettierrc.yaml --check src *.ts *.js
+          prettier_options: --config .prettierrc.yaml --check src *.ts *.tsx
