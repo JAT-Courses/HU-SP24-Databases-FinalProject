@@ -4,13 +4,13 @@ import { databaseCredentials } from "@/config/databaseCredentials"
 import Image from "next/image"
 
 export default function Home() {
-  try {
-    const databaseConnection = mysql.createConnection(databaseCredentials)
-
-    console.log("Connected to DB successfully!")
-  } catch (err) {
-    //console.error("Connection to DB failed: ", err)
-  }
+  // try {
+  //   const databaseConnection = mysql.createConnection(databaseCredentials)
+  //
+  //   console.log("Connected to DB successfully!")
+  // } catch (err) {
+  //   //console.error("Connection to DB failed: ", err)
+  // }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
