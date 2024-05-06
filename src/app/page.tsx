@@ -9,7 +9,7 @@ export default function Home() {
 
     console.log("Connected to DB successfully!")
   } catch (err) {
-    console.error("Connection to DB failed: ", err)
+    //console.error("Connection to DB failed: ", err)
   }
 
   return (
