@@ -1,7 +1,8 @@
 name: style-check
 on:
-  - pull_request
-  - push
+  push:
+    branches:
+      - preview
 
 jobs:
   styleCheck:
