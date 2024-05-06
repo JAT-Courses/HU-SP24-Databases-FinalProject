@@ -14,11 +14,9 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - run: "pwd"
-
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: "--check **/*.{tsx,ts}"
           working_directory: "${{ github.workspace }}/src/"
+          prettier_options: "--check **/*.{tsx,ts}"
