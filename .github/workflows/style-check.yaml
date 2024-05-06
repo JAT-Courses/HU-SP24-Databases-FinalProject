@@ -1,6 +1,7 @@
 name: style-check
 on:
-  - pull_request
+  pull_request:
+  push:
 
 jobs:
   styleCheck:
@@ -16,5 +17,6 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: --check **/*.tsx **/*.ts
-          working_directory: src
+          dry: true
+          prettier_options: --write **/*.{tsx,ts}
+          working_directory: src/
