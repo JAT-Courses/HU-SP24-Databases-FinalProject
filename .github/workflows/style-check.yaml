@@ -16,5 +16,5 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: --check **/*.tsx **/*.ts --ignore-path ../.prettierignore --config ../.prettierrc
+          prettier_options: --check **/*.tsx **/*.ts
           working_directory: src
