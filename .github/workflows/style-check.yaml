@@ -1,11 +1,13 @@
 name: style-check
 on:
-  - pull_request
+  pull_request:
+    branches:
+      - preview
 
 jobs:
   styleCheck:
     # Check if the PR is not from a fork
-    if: github.event.pull_request.head.repo.full_name == github.repository
+    # if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,5 +18,4 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: --check **/*.tsx **/*.ts --ignore-path ../.prettierignore --config ../.prettierrc
-          working_directory: src
+          prettier_options: --config .prettierrc --ignore-path .prettierignore --write ${{ github.workspace }}/src/**/*.{tsx,ts}

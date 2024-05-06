@@ -1,0 +1,22 @@
+name: Check pull request source branch
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - edited
+jobs:
+  check-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch names
+        env:
+          PR-BRANCH: ${{ github.head_ref }}
+          BASE-BRANCH: ${{ github.base_ref }}
+
+        run: |
+          if [ "$PR-BRANCH" != "preview" ] && [ "BASE-BRANCH" == "main" ]; then
+            echo "Merge requests to main branch are only allowed from the preview branch."
+            exit 1
+          fi
