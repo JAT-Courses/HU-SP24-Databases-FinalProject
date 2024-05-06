@@ -1,6 +1,6 @@
 name: style-check
 on:
-  push:
+  pull_request:
     branches:
       - preview
 
