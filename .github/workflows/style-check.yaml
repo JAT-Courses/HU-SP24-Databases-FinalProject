@@ -21,4 +21,4 @@ jobs:
         with:
           # This part is also where you can pass other options, for example:
           prettier_options: "--check **/*.{tsx,ts}"
-          working_directory: "/home/runner/work/HU-SP24-Databases-FinalProject/HU-SP24-Databases-FinalProject/src/"
+          working_directory: "${{ vars.GITHUB_WORKSPACE }}/src/"
