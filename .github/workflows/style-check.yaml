@@ -18,5 +18,4 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: --config .prettierrc --ignore-path .prettierignore --check ${{ github.workspace }}/src/**/*.{tsx,ts}
-          dry: true
+          prettier_options: --config .prettierrc --ignore-path .prettierignore --write ${{ github.workspace }}/src/**/*.{tsx,ts}
