@@ -4,16 +4,10 @@ on:
       - closed
 
 jobs:
-  check-branches:
+  update-preview-branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-
-      - name: Check branch names
+      - uses: morbalint/git-merge-action@v1
         if: ${{ github.head_ref == 'preview' && github.base_ref == 'main' && github.event.pull_request.merged == true}}
-        run: |
-          git checkout preview
-          git merge origin/main --commit "Brining the preview branch in-sync with main!"
-          git push origin preview
+        with:
+          target: 'preview'
