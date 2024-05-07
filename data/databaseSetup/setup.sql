@@ -19,7 +19,15 @@ create table if not exists location(
 
 create table if not exists earthquakes(
     earthquakeId smallint unsigned auto_increment primary key not null,
-    earthquakeDate smallint,
+    year smallint,
+    month smallint,
+    day smallint,
+    hour smallint,
+    minute smallint,
+    second decimal(4,2),
+    latitude varchar(50),
+    longitude varchar(50),
+    depth decimal(6,3),
     magnitude decimal(6,3),
     locationId smallint
 );
@@ -27,9 +35,4 @@ create table if not exists earthquakes(
 load data local infile 'clean/earthquakes/earthquakesOut.csv'
     into table earthquakes
         FIELDS TERMINATED BY ','
-        IGNORE 1 LINES
-    (earthquakeId)
-    set earthquakeDate = @year
-
-
-
+        IGNORE 1 LINES;
