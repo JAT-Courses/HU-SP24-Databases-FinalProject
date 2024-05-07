@@ -7,7 +7,7 @@ use ca_data_development;
 
 /*================= Create Parent Tables =================*/
 
-create table if not exist location(
+create table if not exists location(
   locationId smallint unsigned auto_increment primary key not null,
   state varchar(100) not null,
   county varchar(100),
