@@ -12,8 +12,8 @@ create table if not exists location(
   state varchar(100) not null,
   county varchar(100),
   city varchar(100),
-  majorregion varchar(100),
-  minorregion varchar(100)
+  majorRegion varchar(100),
+  minorRegion varchar(100)
 );
 
 
@@ -30,6 +30,10 @@ create table if not exists earthquakes(
     depth decimal(6,3),
     magnitude decimal(6,3),
     locationId smallint
+        CONSTRAINT FK_LocationID_FL
+            FOREIGN KEY (LocationID) references Location(LocationID)
+                ON DELETE CASCADE
+                ON UPDATE RESTRICT
 );
 
 load data local infile 'clean/earthquakes/earthquakesOut.csv'
