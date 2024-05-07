@@ -5,7 +5,7 @@
 
 /*================= Create Parent Tables =================*/
 
-create table location(
+create table if not exist location(
   locationId smallint unsigned auto_increment primary key not null,
   state varchar(100) not null,
   county varchar(100),
@@ -15,7 +15,7 @@ create table location(
 );
 
 
-create table earthquakes(
+create table if not exists earthquakes(
     earthquakeId smallint unsigned auto_increment primary key not null,
     earthquakeDate date,
     magnitude decimal(6,3),
