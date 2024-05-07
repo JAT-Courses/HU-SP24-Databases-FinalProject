@@ -28,8 +28,8 @@ load data local infile 'clean/earthquakes/earthquakesOut.csv'
     into table earthquakes
         FIELDS TERMINATED BY ','
         IGNORE 1 LINES
-    (earthquakeId, @dateFormatted)
-    set dateFormatted = cast( (select concat("1769","-","7","-","28")) AS Date);
+    (earthquakeId, @var1)
+    set var1 = cast( (select concat("1769","-","7","-","28")) AS Date);
 
 
 
