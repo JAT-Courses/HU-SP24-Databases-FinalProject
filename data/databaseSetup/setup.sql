@@ -34,6 +34,12 @@ create table if not exists earthquakes(
   	CONSTRAINT FK_locationId_EQ foreign key (locationId) references location(locationId)
 );
 
+load data local infile 'clean/location/location.csv'
+    into table location
+        FIELDS TERMINATED BY ','
+        IGNORE 1 LINES;
+
+
 load data local infile 'clean/earthquakes/earthquakesOut.csv'
     into table earthquakes
         FIELDS TERMINATED BY ','
