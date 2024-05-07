@@ -25,6 +25,7 @@ create table earthquakes(
 load data local infile 'clean/earthquakes/earthquakesOut.csv'
     into table earthquakes
         FIELDS TERMINATED BY ','
+        IGNORE 1 LINES
     (earthquakeId, @earthquakeDate)
     set earthquakeDate = cast( (select concat(@year,"-",@month,"-",@day)) AS Date)
 
