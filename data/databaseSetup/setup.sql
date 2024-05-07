@@ -22,7 +22,7 @@ create table earthquakes(
     locationId smallint
 );
 
-load data infile 'data/clean/earthquakes/earthquakesOut.csv'
+load data local infile 'clean/earthquakes/earthquakesOut.csv'
     into table earthquakes
         FIELDS TERMINATED BY ','
     (earthquakeId, @earthquakeDate)
