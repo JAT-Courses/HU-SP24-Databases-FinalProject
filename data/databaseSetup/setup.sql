@@ -18,7 +18,7 @@ create table if not exists location(
 
 
 create table if not exists earthquakes(
-    earthquakeId smallint unsigned auto_increment primary key not null,
+    earthquakeId smallint unsigned auto_increment not null,
     year smallint,
     month smallint,
     day smallint,
@@ -29,10 +29,9 @@ create table if not exists earthquakes(
     longitude varchar(50),
     depth decimal(6,3),
     magnitude decimal(6,3),
-    locationId smallint
-    CONSTRAINT FK_locationId FOREIGN KEY (locationId) references location(locationId)
-                ON DELETE CASCADE
-                ON UPDATE RESTRICT
+    locationId smallint unsigned,
+  	primary key (earthquakeId),
+  	CONSTRAINT FK_locationId_EQ foreign key (locationId) references location(locationId)
 );
 
 load data local infile 'clean/earthquakes/earthquakesOut.csv'
