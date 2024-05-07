@@ -30,8 +30,7 @@ create table if not exists earthquakes(
     depth decimal(6,3),
     magnitude decimal(6,3),
     locationId smallint
-        CONSTRAINT FK_LocationID_FL
-            FOREIGN KEY (LocationID) references Location(LocationID)
+    CONSTRAINT FK_locationId FOREIGN KEY (locationId) references location(locationId)
                 ON DELETE CASCADE
                 ON UPDATE RESTRICT
 );
