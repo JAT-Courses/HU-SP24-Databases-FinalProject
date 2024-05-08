@@ -7,10 +7,6 @@ export default function Home() {
     <>
       <div className="flex">
         <Sidebar />
-        <main className="flex-grow ml-64 relative">
-          <Navbar />
-          <Charts />
-        </main>
       </div>
     </>
   )
