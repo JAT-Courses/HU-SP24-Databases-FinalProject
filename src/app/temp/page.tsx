@@ -1,7 +1,7 @@
 import mysql2 from "mysql2"
 import { databaseCredentials } from "@/config/databaseCredentials"
 // `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
-export default function Page() {
+export async function Page() {
   try {
     const databaseConnection = mysql2.createConnection(databaseCredentials)
 
