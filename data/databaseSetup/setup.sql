@@ -103,7 +103,7 @@ create table landslides(
                             latitude varchar(50),
                             longitude varchar(50),
                             locationId smallint unsigned,
-                            impactTypeAbbreviation smallint unsigned,
+                            impactTypeAbbreviation varchar(5),
                             nearestPlace longtext,
                             infoSource longtext,
                             primary key (landslideId),
