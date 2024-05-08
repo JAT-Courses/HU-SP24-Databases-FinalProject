@@ -80,12 +80,7 @@ create table groundWaterMeasurements(
                                         WSE decimal(6,3),
                                         WSE_QC smallint unsigned,
                                         primary key (measurementId),
-                                        CONSTRAINT FK_station_GWM foreign key (station) references groundWaterStations(station),
-                                        CONSTRAINT FK_WLM_RPE_QC_GWM foreign key (WLM_RPE_QC) references groundWaterQualityCodes(codeId),
-                                        CONSTRAINT FK_WLM_GSE_QC_GWM foreign key (WLM_GSE_QC) references groundWaterQualityCodes(codeId),
-                                        CONSTRAINT FK_RPE_WSE_QC_GWM foreign key (RPE_WSE_QC) references groundWaterQualityCodes(codeId),
-                                        CONSTRAINT FK_GSE_WSE_QC_GWM foreign key (GSE_WSE_QC) references groundWaterQualityCodes(codeId),
-                                        CONSTRAINT FK_WSE_QC_GWM foreign key (WSE_QC) references groundWaterQualityCodes(codeId)
+                                        CONSTRAINT FK_station_GWM foreign key (station) references groundWaterStations(station)
 );
 
 
