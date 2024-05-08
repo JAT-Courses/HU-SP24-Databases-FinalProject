@@ -7,7 +7,7 @@ use ca_data_development;
 /*================= Create Parent Tables =================*/
 
 create table location(
-  locationId smallint unsigned auto_increment primary key not null,
+  locationId smallint unsigned auto_increment primary key not null unique,
   state varchar(100) not null,
   county varchar(100),
   city varchar(100),
@@ -18,7 +18,7 @@ create table location(
 /*================= Create child tables. =================*/
 
 create table earthquakes(
-    earthquakeId smallint unsigned auto_increment not null,
+    earthquakeId smallint unsigned auto_increment not null unique,
     year smallint,
     month smallint,
     day smallint,
@@ -35,7 +35,7 @@ create table earthquakes(
 );
 
 create table groundWaterStations(
-    stationId varchar(100) not null,
+    stationId varchar(100) not null unique,
     siteCode varchar(100),
     stationName longtext,
     wellName varchar(100),
