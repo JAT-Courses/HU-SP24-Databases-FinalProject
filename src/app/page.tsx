@@ -1,17 +1,6 @@
-import mysql from "mysql2"
-import { databaseCredentials } from "@/config/databaseCredentials"
-
 import Image from "next/image"
 
 export default function Home() {
-  try {
-    const databaseConnection = mysql.createConnection(databaseCredentials)
-
-    console.log("Connected to DB successfully!")
-  } catch (err) {
-    console.error("Connection to DB failed: ", err)
-  }
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -28,7 +17,7 @@ export default function Home() {
           >
             By{" "}
             <Image
-              src="/vercel.svg"
+              src="vercel.svg"
               alt="Vercel Logo"
               className="dark:invert"
               width={100}
