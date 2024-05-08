@@ -103,12 +103,12 @@ create table landslides(
                             latitude varchar(50),
                             longitude varchar(50),
                             locationId smallint unsigned,
-                            impactTypeId smallint unsigned,
+                            impactTypeAbbreviation smallint unsigned,
                             nearestPlace longtext,
                             infoSource longtext,
                             primary key (landslideId),
                             CONSTRAINT FK_locationId_LS foreign key (locationId) references location(locationId) ON DELETE CASCADE,
-                            CONSTRAINT FK_impactTypeId_LS foreign key (impactTypeId) references landslideImpactTypes(typeId) ON DELETE CASCADE
+                            CONSTRAINT FK_impactTypeAbbreviation_LS foreign key (impactTypeAbbreviation) references landslideImpactTypes(abbreviation) ON DELETE CASCADE
 );
 
 
