@@ -1,6 +1,3 @@
-import mysql2 from "mysql2"
-import { databaseCredentials } from "@/config/databaseCredentials"
-
 import Image from "next/image"
 
 export default function Home() {
