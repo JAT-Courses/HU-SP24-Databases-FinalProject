@@ -68,7 +68,7 @@ create table groundWaterQualityCodes(
 create table groundWaterMeasurements(
                                         measurementId smallint unsigned auto_increment not null,
                                         station varchar(100),
-                                        measurementDate date,
+                                        measurementDate varchar(100),
                                         WLM_RPE decimal(6,3),
                                         WLM_RPE_QC smallint unsigned,
                                         WLM_GSE decimal(6,3),
