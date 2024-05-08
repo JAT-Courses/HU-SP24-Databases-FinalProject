@@ -30,6 +30,13 @@ create table landslideImpactTypes(
                                         key (abbreviation)
 );
 
+create table wildfireCauses(
+                                     causeId bigint unsigned auto_increment not null,
+                                     name varchar(50),
+                                     primary key (causeId),
+                                     key (name)
+);
+
 /*================= Create child tables. =================*/
 
 create table earthquakes(
@@ -138,8 +145,31 @@ create table snowpackMeasurements(
                                 CONSTRAINT FK_stationCode_SPM foreign key (stationCode) references snowpackSensors(stationCode) ON DELETE CASCADE
 );
 
+create table fireDepartmentUnits(
+                                     unitId bigint unsigned auto_increment not null,
+                                     name varchar(3),
+                                     unitCode varchar(5),
+                                     locationId bigint unsigned,
+                                     primary key (unitId),
+                                     key (unitCode),
+                                     CONSTRAINT FK_locationId_FDU foreign key (locationId) references location(locationId) ON DELETE CASCADE
+);
 
-
+create table wildfires(
+                            wildfireId bigint unsigned auto_increment not null,
+                            year smallint,
+                            state varchar(5),
+                            agency varchar(5),
+                            unitCode varchar(5),
+                            name varchar(50),
+                            incNum bigint unsigned,
+                            alarmDate varchar(50),
+                            containedDate varchar(50),
+                            causeId bigint unsigned,
+                            primary key (wildfireId),
+                            CONSTRAINT FK_unitCode_WF foreign key (unitCode) references fireDepartmentUnits(unitCode) ON DELETE CASCADE,
+                            CONSTRAINT FK_causeId_WF foreign key (causeId) references wildfireCauses(causeId) ON DELETE CASCADE
+);
 
 load data local infile 'clean/location/location.csv'
     into table location
@@ -189,3 +219,18 @@ load data local infile 'clean/snowpack/combinedSWC.csv'
     IGNORE 1 LINES
     (stationCode, duration, sensorNumber, sensorType, measurementDate, observedDate, value, dataFlag, units)
     SET snowpackMeasurementId = NULL;
+
+load data local infile 'clean/wildfires/fireCauses.csv'
+    into table wildfireCauses
+    FIELDS TERMINATED BY ','
+    IGNORE 1 LINES;
+
+load data local infile 'clean/wildfires/fireDepartmentUnits.csv'
+    into table fireDepartmentUnits
+    FIELDS TERMINATED BY ','
+    IGNORE 1 LINES;
+
+load data local infile 'clean/wildfires/wildfires.csv'
+    into table wildfires
+    FIELDS TERMINATED BY ','
+    IGNORE 1 LINES;
