@@ -9,18 +9,14 @@ UNLOCK TABLES;
 
 /* Drop any and all tables/functions that already exist. */
 /* Child Tables */
-DROP TABLE IF EXISTS AvgHousehold;
-DROP TABLE IF EXISTS FoodLegislation;
-DROP TABLE IF EXISTS PopulationStats;
-DROP TABLE IF EXISTS AvgHousehold;
-DROP TABLE IF EXISTS ConsumptionStats;
-DROP TABLE IF EXISTS MetabolicDisease;
-DROP TABLE IF EXISTS FoodAssistance;
-DROP TABLE IF EXISTS SchoolFoodPrograms;
+DROP TABLE IF EXISTS earthquakes;
+DROP TABLE IF EXISTS groundWaterMeasurements;
+DROP TABLE IF EXISTS groundWaterQualityCodes;
+DROP TABLE IF EXISTS groundWaterStations;
+DROP TABLE IF EXISTS earthquakes;
 
 /* Parent Tables */
-DROP TABLE IF EXISTS DataType;
-DROP TABLE IF EXISTS Location;
+DROP TABLE IF EXISTS location;
 
 
 /*********** End cleanup ***********/
