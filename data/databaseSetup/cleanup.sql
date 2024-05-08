@@ -13,11 +13,12 @@ UNLOCK TABLES;
 /* Child Tables */
 DROP TABLE IF EXISTS earthquakes;
 DROP TABLE IF EXISTS groundWaterMeasurements;
-DROP TABLE IF EXISTS groundWaterQualityCodes;
 DROP TABLE IF EXISTS groundWaterStations;
-DROP TABLE IF EXISTS earthquakes;
+DROP TABLE IF EXISTS landslides;
 
 /* Parent Tables */
+DROP TABLE IF EXISTS landslideImpactTypes;
+DROP TABLE IF EXISTS groundWaterQualityCodes;
 DROP TABLE IF EXISTS location;
 
 
