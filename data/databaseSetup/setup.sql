@@ -31,7 +31,7 @@ create table earthquakes(
     depth decimal(6,3),
     magnitude decimal(6,3),
     locationId smallint unsigned,
-    computedDate date,
+    earthquakeDate date,
   	primary key (earthquakeId),
   	CONSTRAINT FK_locationId_EQ foreign key (locationId) references location(locationId) ON DELETE CASCADE
 );
@@ -95,8 +95,10 @@ load data local infile 'clean/earthquakes/earthquakesOut.csv'
     into table earthquakes
         FIELDS TERMINATED BY ','
         IGNORE 1 LINES
-        set computedDate = cast((concat(year, '-', month, '-', day)) AS Date)
-;
+        (earthquakeId, @dummy, @dummy, @dummy, @dummy, @dummy, @dummy, latitude, longitude, depth, magnitude, locationId)
+        set earthquakeDate = cast((concat(year, '-', month, '-', day)) AS Date);
+
+
 
 load data local infile 'clean/groundWaterLevels/gwlStationsOut.csv'
     into table groundWaterStations
