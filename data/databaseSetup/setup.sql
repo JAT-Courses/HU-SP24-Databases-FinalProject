@@ -79,8 +79,7 @@ create table groundWaterMeasurements(
                                         GSE_WSE_QC smallint unsigned,
                                         WSE decimal(6,3),
                                         WSE_QC smallint unsigned,
-                                        primary key (measurementId),
-                                        CONSTRAINT FK_station_GWM foreign key (station) references groundWaterStations(station)
+                                        primary key (measurementId)
 );
 
 
