@@ -37,7 +37,7 @@ create table earthquakes(
 create table groundWaterStations(
     station varchar(100) not null,
     siteCode varchar(100),
-    stationName varchar(100),
+    stationName longtext,
     wellName varchar(100),
     latitude varchar(50),
     longitude varchar(50),
@@ -52,7 +52,7 @@ create table groundWaterStations(
     wellUse varchar(100),
     wellType varchar(100),
     wcr_no varchar(100),
-    wdl varchar(100),
+    wdl longtext,
     comment longtext,
     locationId smallint unsigned,
     primary key (station),
