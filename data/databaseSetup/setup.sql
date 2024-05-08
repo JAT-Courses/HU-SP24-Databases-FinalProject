@@ -82,7 +82,12 @@ create table groundWaterMeasurements(
                                         WSE decimal(6,3),
                                         WSE_QC smallint unsigned,
                                         primary key (measurementId),
-                                        CONSTRAINT FK_stationId_GWM foreign key (stationId) references groundWaterStations(stationId) ON DELETE CASCADE
+                                        CONSTRAINT FK_stationId_GWM foreign key (stationId) references groundWaterStations(stationId) ON DELETE CASCADE,
+                                        CONSTRAINT FK_WLM_RPE_QC_GWM foreign key (WLM_RPE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE,
+                                        CONSTRAINT FK_WLM_GSE_QC_GWM foreign key (WLM_GSE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE,
+                                        CONSTRAINT FK_RPE_WSE_QC_GWM foreign key (RPE_WSE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE,
+                                        CONSTRAINT FK_GSE_WSE_QC_GWM foreign key (GSE_WSE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE,
+                                        CONSTRAINT FK_WSE_QC_GWM foreign key (WSE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE
 );
 
 
@@ -94,10 +99,7 @@ load data local infile 'clean/location/location.csv'
 load data local infile 'clean/earthquakes/earthquakesOut.csv'
     into table earthquakes
         FIELDS TERMINATED BY ','
-        IGNORE 1 LINES
-        set earthquakeDateFormatted = cast((concat(year, '-', month, '-', day)) AS Date);
-
-
+        IGNORE 1 LINES;
 
 load data local infile 'clean/groundWaterLevels/gwlStationsOut.csv'
     into table groundWaterStations
