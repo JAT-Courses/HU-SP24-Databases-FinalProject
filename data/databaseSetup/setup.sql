@@ -81,7 +81,7 @@ create table groundWaterMeasurements(
                                         WSE decimal(6,3),
                                         WSE_QC smallint unsigned,
                                         primary key (measurementId),
-                                    CONSTRAINT FK_stationId_GWM foreign key (stationId) references groundWaterStations(stationId) ON DELETE CASCADE
+                                        CONSTRAINT FK_stationId_GWM foreign key (stationId) references groundWaterStations(stationId) ON DELETE CASCADE
 );
 
 
