@@ -26,7 +26,8 @@ create table landslideImpactTypes(
                                         typeId smallint unsigned auto_increment not null,
                                         abbreviation varchar(5),
                                         name varchar(50),
-                                        primary key (typeId)
+                                        primary key (typeId),
+                                        key (abbreviation)
 );
 
 /*================= Create child tables. =================*/
