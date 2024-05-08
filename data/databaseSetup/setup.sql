@@ -68,7 +68,7 @@ create table groundWaterQualityCodes(
 
 create table groundWaterMeasurements(
                                         measurementId smallint unsigned auto_increment not null,
-                                        station varchar(100),
+                                        stationId varchar(100),
                                         measurementDate date,
                                         WLM_RPE decimal(6,3),
                                         WLM_RPE_QC smallint unsigned,
@@ -80,7 +80,8 @@ create table groundWaterMeasurements(
                                         GSE_WSE_QC smallint unsigned,
                                         WSE decimal(6,3),
                                         WSE_QC smallint unsigned,
-                                        primary key (measurementId)
+                                        primary key (measurementId),
+                                    CONSTRAINT FK_stationId_GWM foreign key (stationId) references groundWaterStations(stationId) ON DELETE CASCADE
 );
 
 
@@ -108,5 +109,5 @@ load data local infile 'clean/groundWaterLevels/gwl-daily-small.csv'
     into table groundWaterMeasurements
     FIELDS TERMINATED BY ','
     IGNORE 1 LINES
-    (station, measurementDate, WLM_RPE, WLM_RPE_QC, WLM_GSE, WLM_GSE_QC, RPE_WSE, RPE_WSE_QC, GSE_WSE, GSE_WSE_QC, WSE, WSE_QC)
+    (stationId, measurementDate, WLM_RPE, WLM_RPE_QC, WLM_GSE, WLM_GSE_QC, RPE_WSE, RPE_WSE_QC, GSE_WSE, GSE_WSE_QC, WSE, WSE_QC)
     SET measurementId = NULL;
