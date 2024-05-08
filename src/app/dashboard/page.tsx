@@ -1,14 +1,17 @@
-import { getQ1 } from "@/api/data"
-import ColumnChart from "@/components/ColumnChart"
+import Sidebar from "@/components/Sidebar"
+import Navbar from "@/components/Navbar"
+import Charts from "@/components/Charts"
 
-// `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
-export default async function Page() {
-  const Q1result = await getQ1()
-
+export default function Home() {
   return (
-    <div>
-      <h1>My Data Visualization</h1>
-      <ColumnChart />
-    </div>
+    <>
+      <div className="flex">
+        <Sidebar />
+        <main className="flex-grow ml-64 relative">
+          <Navbar />
+          <Charts />
+        </main>
+      </div>
+    </>
   )
 }
