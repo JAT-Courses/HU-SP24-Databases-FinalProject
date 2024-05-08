@@ -100,7 +100,7 @@ create table groundWaterMeasurements(
 
 create table landslides(
                             landslideId smallint unsigned auto_increment not null,
-                            landslideDate date,
+                            landslideDate varchar(20),
                             latitude varchar(50),
                             longitude varchar(50),
                             locationId smallint unsigned,
