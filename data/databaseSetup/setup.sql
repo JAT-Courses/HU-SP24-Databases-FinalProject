@@ -76,7 +76,7 @@ create table groundWaterStations(
 );
 
 create table groundWaterMeasurements(
-                                        measurementId smallint unsigned auto_increment not null,
+                                        groundWaterMeasurementId smallint unsigned auto_increment not null,
                                         stationId varchar(100),
                                         measurementDate date,
                                         WLM_RPE decimal(6,3),
@@ -124,14 +124,14 @@ create table snowpackSensors(
 );
 
 create table snowpackMeasurements(
-                                measurementId smallint unsigned auto_increment not null,
+                                snowpackMeasurementId smallint unsigned auto_increment not null,
                                 stationCode varchar(3),
                                 duration varchar(5),
                                 sensorNumber smallint,
                                 sensorType varchar(20),
                                 measurementDate datetime,
                                 observedDate datetime,
-                                value decimal(6,3),
+                                value varchar(10),
                                 dataFlag varchar(5),
                                 units varchar(20),
                                 primary key (measurementId),
@@ -189,3 +189,5 @@ load data local infile 'clean/snowpack/combinedSWC.csv'
     IGNORE 1 LINES
     (stationCode, duration, sensorNumber, sensorType, measurementDate, observedDate, value, dataFlag, units)
     SET measurementId = NULL;
+
+BSH,D,3,SNOW WC,19880922 0000,19880922 0000,14.30,,INCHES
