@@ -2,7 +2,7 @@
  * Script for database setup with dataset.
 */
 
-use ca_data_development;
+# use ca_data_development;
 
 /*================= Create Parent Tables =================*/
 
@@ -191,7 +191,7 @@ load data local infile 'clean/groundWaterLevels/gwl-quality_codes.csv'
     FIELDS TERMINATED BY ','
     IGNORE 1 LINES;
 
-load data local infile 'clean/groundWaterLevels/gwl-daily-small.csv'
+load data local infile 'clean/groundWaterLevels/gwl-daily.csv'
     into table groundWaterMeasurements
     FIELDS TERMINATED BY ','
     IGNORE 1 LINES
