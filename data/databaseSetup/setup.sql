@@ -16,6 +16,19 @@ create table location(
   primary key (locationId)
 );
 
+create table groundWaterQualityCodes(
+                                        codeId smallint unsigned auto_increment not null,
+                                        description longtext,
+                                        primary key (codeId)
+);
+
+create table landslideImpactTypes(
+                                        typeId smallint unsigned auto_increment not null,
+                                        abbreviation varchar(5),
+                                        name varchar(50),
+                                        primary key (typeId)
+);
+
 /*================= Create child tables. =================*/
 
 create table earthquakes(
@@ -61,12 +74,6 @@ create table groundWaterStations(
     CONSTRAINT FK_locationId_GWS foreign key (locationId) references location(locationId) ON DELETE CASCADE
 );
 
-create table groundWaterQualityCodes(
-                                        codeId smallint unsigned auto_increment not null,
-                                        description longtext,
-                                        primary key (codeId)
-);
-
 create table groundWaterMeasurements(
                                         measurementId smallint unsigned auto_increment not null,
                                         stationId varchar(100),
@@ -88,6 +95,20 @@ create table groundWaterMeasurements(
                                         CONSTRAINT FK_RPE_WSE_QC_GWM foreign key (RPE_WSE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE,
                                         CONSTRAINT FK_GSE_WSE_QC_GWM foreign key (GSE_WSE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE,
                                         CONSTRAINT FK_WSE_QC_GWM foreign key (WSE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE
+);
+
+create table landslides(
+                            landslideId smallint unsigned auto_increment not null,
+                            landslideDate date,
+                            latitude varchar(50),
+                            longitude varchar(50),
+                            locationId smallint unsigned,
+                            impactTypeId smallint unsigned,
+                            nearestPlace longtext,
+                            infoSource longtext,
+                            primary key (landslideId),
+                            CONSTRAINT FK_locationId_LS foreign key (locationId) references location(locationId) ON DELETE CASCADE,
+                            CONSTRAINT FK_impactTypeId_LS foreign key (impactTypeId) references landslideImpactTypes(typeId) ON DELETE CASCADE
 );
 
 
@@ -117,3 +138,13 @@ load data local infile 'clean/groundWaterLevels/gwl-daily-small.csv'
     IGNORE 1 LINES
     (stationId, measurementDate, WLM_RPE, WLM_RPE_QC, WLM_GSE, WLM_GSE_QC, RPE_WSE, RPE_WSE_QC, GSE_WSE, GSE_WSE_QC, WSE, WSE_QC)
     SET measurementId = NULL;
+
+load data local infile 'clean/landslides/impactTypes.csv'
+    into table landslideImpactTypes
+    FIELDS TERMINATED BY ','
+    IGNORE 1 LINES;
+
+load data local infile 'clean/landslides/landslidesOut.csv'
+    into table landslideImpactTypes
+    FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+    IGNORE 1 LINES;
