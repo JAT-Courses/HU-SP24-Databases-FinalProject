@@ -35,7 +35,7 @@ create table earthquakes(
 );
 
 create table groundWaterStations(
-    station varchar(100) not null,
+    stationId varchar(100) not null,
     siteCode varchar(100),
     stationName longtext,
     wellName varchar(100),
@@ -55,7 +55,7 @@ create table groundWaterStations(
     wdl longtext,
     comment longtext,
     locationId smallint unsigned,
-    primary key (station),
+    primary key (stationId),
     CONSTRAINT FK_locationId_GWS foreign key (locationId) references location(locationId)
 );
 
@@ -68,7 +68,7 @@ create table groundWaterQualityCodes(
 create table groundWaterMeasurements(
                                         measurementId smallint unsigned auto_increment not null,
                                         station varchar(100),
-                                        measurementDate varchar(100),
+                                        measurementDate date,
                                         WLM_RPE decimal(6,3),
                                         WLM_RPE_QC smallint unsigned,
                                         WLM_GSE decimal(6,3),
@@ -79,7 +79,8 @@ create table groundWaterMeasurements(
                                         GSE_WSE_QC smallint unsigned,
                                         WSE decimal(6,3),
                                         WSE_QC smallint unsigned,
-                                        primary key (measurementId)
+                                        primary key (measurementId),
+                                        foreign key (station) references groundWaterStations(stationId)
 );
 
 
