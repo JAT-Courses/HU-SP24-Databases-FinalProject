@@ -102,7 +102,7 @@ create table landslides(
                             landslideId smallint unsigned auto_increment not null,
                             landslideDate varchar(20),
                             latitude varchar(50),
-                            longitude varchar(50),
+
                             locationId smallint unsigned,
                             impactTypeAbbreviation varchar(5),
                             nearestPlace longtext,
@@ -111,6 +111,34 @@ create table landslides(
                             CONSTRAINT FK_locationId_LS foreign key (locationId) references location(locationId) ON DELETE CASCADE,
                             CONSTRAINT FK_impactTypeAbbreviation_LS foreign key (impactTypeAbbreviation) references landslideImpactTypes(abbreviation) ON DELETE CASCADE
 );
+
+create table snowpackSensors(
+                           snowpackSensorId smallint unsigned auto_increment not null,
+                           stationCode varchar(3),
+                           longitude varchar(50),
+                           latitude varchar(50),
+                           locationId smallint unsigned,
+                           primary key (snowpackSensorId),
+                           key (stationCode),
+                           CONSTRAINT FK_locationId_LS foreign key (locationId) references location(locationId) ON DELETE CASCADE
+);
+
+create table snowpackMeasurements(
+                                measurementId smallint unsigned auto_increment not null,
+                                stationCode varchar(3),
+                                duration varchar(5),
+                                sensorNumber smallint,
+                                sensorType varchar(20),
+                                measurementDate datetime,
+                                observedDate datetime,
+                                value decimal(6,3),
+                                dataFlag varchar(5),
+                                units varchar(20),
+                                primary key (measurementId),
+                                CONSTRAINT FK_stationCode_LS foreign key (stationCode) references snowpackSensors(stationCode) ON DELETE CASCADE
+);
+
+
 
 
 load data local infile 'clean/location/location.csv'
@@ -149,3 +177,15 @@ load data local infile 'clean/landslides/landslidesOut.csv'
     into table landslides
     FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     IGNORE 1 LINES;
+
+load data local infile 'clean/snowpack/snowpackSensors.csv'
+    into table snowpackSensors
+    FIELDS TERMINATED BY ','
+    IGNORE 1 LINES;
+
+load data local infile 'clean/snowpack/combinedSWC.csv'
+    into table snowpackMeasurements
+    FIELDS TERMINATED BY ','
+    IGNORE 1 LINES
+    (stationCode, duration, sensorNumber, sensorType, measurementDate, observedDate, value, dataFlag, units)
+    SET measurementId = NULL;
