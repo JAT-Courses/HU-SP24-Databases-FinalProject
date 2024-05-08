@@ -108,4 +108,5 @@ load data local infile 'clean/groundWaterLevels/gwl-daily-small.csv'
     into table groundWaterMeasurements
     FIELDS TERMINATED BY ','
     IGNORE 1 LINES
+    (station, measurementDate, WLM_RPE, WLM_RPE_QC, WLM_GSE, WLM_GSE_QC, RPE_WSE, RPE_WSE_QC, GSE_WSE, GSE_WSE_QC, WSE, WSE_QC)
     SET measurementId = NULL;
