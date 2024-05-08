@@ -120,7 +120,7 @@ create table snowpackSensors(
                            locationId smallint unsigned,
                            primary key (snowpackSensorId),
                            key (stationCode),
-                           CONSTRAINT FK_locationId_LS foreign key (locationId) references location(locationId) ON DELETE CASCADE
+                           CONSTRAINT FK_locationId_SPS foreign key (locationId) references location(locationId) ON DELETE CASCADE
 );
 
 create table snowpackMeasurements(
@@ -135,7 +135,7 @@ create table snowpackMeasurements(
                                 dataFlag varchar(5),
                                 units varchar(20),
                                 primary key (measurementId),
-                                CONSTRAINT FK_stationCode_LS foreign key (stationCode) references snowpackSensors(stationCode) ON DELETE CASCADE
+                                CONSTRAINT FK_stationCode_SPM foreign key (stationCode) references snowpackSensors(stationCode) ON DELETE CASCADE
 );
 
 
