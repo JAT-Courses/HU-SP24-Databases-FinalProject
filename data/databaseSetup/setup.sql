@@ -145,6 +145,6 @@ load data local infile 'clean/landslides/impactTypes.csv'
     IGNORE 1 LINES;
 
 load data local infile 'clean/landslides/landslidesOut.csv'
-    into table landslideImpactTypes
+    into table landslides
     FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     IGNORE 1 LINES;
