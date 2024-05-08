@@ -7,7 +7,7 @@ use ca_data_development;
 /*================= Create Parent Tables =================*/
 
 create table location(
-  locationId smallint unsigned auto_increment not null,
+  locationId bigint unsigned auto_increment not null,
   state varchar(100) not null,
   county varchar(100),
   city varchar(100),
@@ -17,13 +17,13 @@ create table location(
 );
 
 create table groundWaterQualityCodes(
-                                        codeId smallint unsigned auto_increment not null,
+                                        codeId bigint unsigned auto_increment not null,
                                         description longtext,
                                         primary key (codeId)
 );
 
 create table landslideImpactTypes(
-                                        typeId smallint unsigned auto_increment not null,
+                                        typeId bigint unsigned auto_increment not null,
                                         abbreviation varchar(5),
                                         name varchar(50),
                                         primary key (typeId),
@@ -33,7 +33,7 @@ create table landslideImpactTypes(
 /*================= Create child tables. =================*/
 
 create table earthquakes(
-    earthquakeId smallint unsigned auto_increment not null,
+    earthquakeId bigint unsigned auto_increment not null,
     year smallint,
     month smallint,
     day smallint,
@@ -70,13 +70,13 @@ create table groundWaterStations(
     wcr_no varchar(100),
     wdl longtext,
     comment longtext,
-    locationId smallint unsigned,
+    locationId bigint unsigned,
     primary key (stationId),
     CONSTRAINT FK_locationId_GWS foreign key (locationId) references location(locationId) ON DELETE CASCADE
 );
 
 create table groundWaterMeasurements(
-                                        groundWaterMeasurementId smallint unsigned auto_increment not null,
+                                        groundWaterMeasurementId bigint unsigned auto_increment not null,
                                         stationId varchar(100),
                                         measurementDate date,
                                         WLM_RPE decimal(6,3),
@@ -99,11 +99,11 @@ create table groundWaterMeasurements(
 );
 
 create table landslides(
-                            landslideId smallint unsigned auto_increment not null,
+                            landslideId bigint unsigned auto_increment not null,
                             landslideDate varchar(20),
                             latitude varchar(50),
                             longitude varchar(50),
-                            locationId smallint unsigned,
+                            locationId bigint unsigned,
                             impactTypeAbbreviation varchar(5),
                             nearestPlace longtext,
                             infoSource longtext,
@@ -113,18 +113,18 @@ create table landslides(
 );
 
 create table snowpackSensors(
-                           snowpackSensorId smallint unsigned auto_increment not null,
+                           snowpackSensorId bigint unsigned auto_increment not null,
                            stationCode varchar(3),
                            longitude varchar(50),
                            latitude varchar(50),
-                           locationId smallint unsigned,
+                           locationId bigint unsigned,
                            primary key (snowpackSensorId),
                            key (stationCode),
                            CONSTRAINT FK_locationId_SPS foreign key (locationId) references location(locationId) ON DELETE CASCADE
 );
 
 create table snowpackMeasurements(
-                                snowpackMeasurementId smallint unsigned auto_increment not null,
+                                snowpackMeasurementId bigint unsigned auto_increment not null,
                                 stationCode varchar(3),
                                 duration varchar(5),
                                 sensorNumber smallint,
