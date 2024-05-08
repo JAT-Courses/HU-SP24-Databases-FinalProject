@@ -97,7 +97,7 @@ load data local infile 'clean/earthquakes/earthquakesOut.csv'
 
 load data local infile 'clean/groundWaterLevels/gwlStationsOut.csv'
     into table groundWaterStations
-    FIELDS TERMINATED BY ','
+    FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     IGNORE 1 LINES;
 
 /*load data local infile 'clean/groundWaterLevels/gwl-quality_codes.csv'
