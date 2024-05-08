@@ -89,7 +89,7 @@ create table groundWaterMeasurements(
                                         GSE_WSE_QC smallint unsigned,
                                         WSE decimal(6,3),
                                         WSE_QC smallint unsigned,
-                                        primary key (measurementId),
+                                        primary key (groundWaterMeasurementId),
                                         CONSTRAINT FK_stationId_GWM foreign key (stationId) references groundWaterStations(stationId) ON DELETE CASCADE,
                                         CONSTRAINT FK_WLM_RPE_QC_GWM foreign key (WLM_RPE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE,
                                         CONSTRAINT FK_WLM_GSE_QC_GWM foreign key (WLM_GSE_QC) references groundWaterQualityCodes(codeId) ON DELETE CASCADE,
@@ -134,7 +134,7 @@ create table snowpackMeasurements(
                                 value varchar(10),
                                 dataFlag varchar(5),
                                 units varchar(20),
-                                primary key (measurementId),
+                                primary key (snowpackMeasurementId),
                                 CONSTRAINT FK_stationCode_SPM foreign key (stationCode) references snowpackSensors(stationCode) ON DELETE CASCADE
 );
 
@@ -166,7 +166,7 @@ load data local infile 'clean/groundWaterLevels/gwl-daily-small.csv'
     FIELDS TERMINATED BY ','
     IGNORE 1 LINES
     (stationId, measurementDate, WLM_RPE, WLM_RPE_QC, WLM_GSE, WLM_GSE_QC, RPE_WSE, RPE_WSE_QC, GSE_WSE, GSE_WSE_QC, WSE, WSE_QC)
-    SET measurementId = NULL;
+    SET groundWaterMeasurementId = NULL;
 
 load data local infile 'clean/landslides/impactTypes.csv'
     into table landslideImpactTypes
@@ -188,6 +188,4 @@ load data local infile 'clean/snowpack/combinedSWC.csv'
     FIELDS TERMINATED BY ','
     IGNORE 1 LINES
     (stationCode, duration, sensorNumber, sensorType, measurementDate, observedDate, value, dataFlag, units)
-    SET measurementId = NULL;
-
-BSH,D,3,SNOW WC,19880922 0000,19880922 0000,14.30,,INCHES
+    SET snowpackMeasurementId = NULL;
