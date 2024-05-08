@@ -147,7 +147,7 @@ create table snowpackMeasurements(
 
 create table fireDepartmentUnits(
                                      unitId bigint unsigned auto_increment not null,
-                                     name varchar(3),
+                                     name varchar(50),
                                      unitCode varchar(5),
                                      locationId bigint unsigned,
                                      primary key (unitId),
