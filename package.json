@@ -11,6 +11,7 @@
     "style/check": "prettier --config .prettierrc --check src *.ts *.js"
   },
   "dependencies": {
+    "@canvasjs/charts": "^3.8.5",
     "@canvasjs/react-charts": "^1.0.2",
     "@next/env": "^14.2.3",
     "mysql2": "^3.9.7",

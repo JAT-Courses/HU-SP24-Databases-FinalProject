@@ -9,13 +9,14 @@ export async function getQ1() {
 
     console.log("Connected to DB successfully!")
 
-    const [result] = await databaseConnection.query(
-      "select MONTH(measurementDate) as month, avg(GSE_WSE) as averageGWL from groundWaterMeasurements where YEAR(measurementDate) = 2000 group by MONTH(measurementDate) order by month asc"
-    )
-
-    console.log(result)
+    const [rows, fields] = await databaseConnection.query({
+      sql: "select MONTH(measurementDate) as month, avg(GSE_WSE) as averageGWL from groundWaterMeasurements where YEAR(measurementDate) = 2000 group by MONTH(measurementDate) order by month asc",
+      rowsAsArray: true,
+    })
 
     databaseConnection.release()
+
+    return rows
   } catch (err) {
     //console.error("Connection to DB failed: ", err)
   }

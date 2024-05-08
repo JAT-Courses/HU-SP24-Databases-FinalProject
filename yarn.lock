@@ -14,9 +14,14 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@canvasjs/charts@^3.8.5":
+  version "3.8.5"
+  resolved "https://registry.yarnpkg.com/@canvasjs/charts/-/charts-3.8.5.tgz#c3bde7ae4a95721a3e6fbaab03713a964c069d48"
+  integrity sha512-i2G8v/6LlV4vGWDFu313r4ZaoCD0Z5/EDCzkTOF0tIiCzDXeij0Hn/BBtmzdoQj4IlG/TMKYcY74Tol47iIaQg==
+
 "@canvasjs/react-charts@^1.0.2":
   version "1.0.2"
-  resolved "https://registry.npmjs.org/@canvasjs/react-charts/-/react-charts-1.0.2.tgz"
+  resolved "https://registry.yarnpkg.com/@canvasjs/react-charts/-/react-charts-1.0.2.tgz#56b1fa72018522240ce03106426f4ee57959112f"
   integrity sha512-PZgJlDbGdMF4AN/KvrvGY9X50EByJMZ7MHfQB/U0aky9Onn9mt0CpsvwudBsBe+DofaV3SHR4SHn/Wfo/pubDw==
 
 "@cspotcode/source-map-support@^0.8.0":
