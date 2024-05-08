@@ -109,7 +109,8 @@ load data local infile 'clean/groundWaterLevels/gwl-quality_codes.csv'
     FIELDS TERMINATED BY ','
     IGNORE 1 LINES;
 
-load data local infile 'clean/groundWaterLevels/gwl-daily.csv'
+load data local infile 'clean/groundWaterLevels/gwl-daily-small.csv'
     into table groundWaterMeasurements
     FIELDS TERMINATED BY ','
-    IGNORE 1 LINES;
+    IGNORE 1 LINES
+    SET measurementId = NULL;
