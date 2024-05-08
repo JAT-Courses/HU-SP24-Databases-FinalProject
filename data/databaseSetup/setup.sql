@@ -95,7 +95,7 @@ load data local infile 'clean/earthquakes/earthquakesOut.csv'
     into table earthquakes
         FIELDS TERMINATED BY ','
         IGNORE 1 LINES
-        set computedDate = cast( (select concat(year + '-' + month + '-' + day)) AS Date)
+        set computedDate = cast((concat(year, '-', month, '-', day)) AS Date)
 ;
 
 load data local infile 'clean/groundWaterLevels/gwlStationsOut.csv'
