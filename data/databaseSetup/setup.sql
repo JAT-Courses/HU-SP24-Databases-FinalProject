@@ -7,18 +7,19 @@ use ca_data_development;
 /*================= Create Parent Tables =================*/
 
 create table location(
-  locationId smallint unsigned auto_increment primary key not null unique,
+  locationId smallint unsigned auto_increment not null,
   state varchar(100) not null,
   county varchar(100),
   city varchar(100),
   majorRegion varchar(100),
-  minorRegion varchar(100)
+  minorRegion varchar(100),
+  primary key (locationId)
 );
 
 /*================= Create child tables. =================*/
 
 create table earthquakes(
-    earthquakeId smallint unsigned auto_increment not null unique,
+    earthquakeId smallint unsigned auto_increment not null,
     year smallint,
     month smallint,
     day smallint,
@@ -31,11 +32,11 @@ create table earthquakes(
     magnitude decimal(6,3),
     locationId smallint unsigned,
   	primary key (earthquakeId),
-  	CONSTRAINT FK_locationId_EQ foreign key (locationId) references location(locationId)
+  	CONSTRAINT FK_locationId_EQ foreign key (locationId) references location(locationId) ON DELETE CASCADE
 );
 
 create table groundWaterStations(
-    stationId varchar(100) not null unique,
+    stationId varchar(100) not null,
     siteCode varchar(100),
     stationName longtext,
     wellName varchar(100),
@@ -56,7 +57,7 @@ create table groundWaterStations(
     comment longtext,
     locationId smallint unsigned,
     primary key (stationId),
-    CONSTRAINT FK_locationId_GWS foreign key (locationId) references location(locationId)
+    CONSTRAINT FK_locationId_GWS foreign key (locationId) references location(locationId) ON DELETE CASCADE
 );
 
 create table groundWaterQualityCodes(
@@ -79,8 +80,7 @@ create table groundWaterMeasurements(
                                         GSE_WSE_QC smallint unsigned,
                                         WSE decimal(6,3),
                                         WSE_QC smallint unsigned,
-                                        primary key (measurementId),
-                                        foreign key (station) references groundWaterStations(stationId)
+                                        primary key (measurementId)
 );
 
 
